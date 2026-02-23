@@ -84,34 +84,34 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| VIEW-01 | — | Pending |
-| VIEW-02 | — | Pending |
-| VIEW-03 | — | Pending |
-| VIEW-04 | — | Pending |
-| VIEW-05 | — | Pending |
-| VIEW-06 | — | Pending |
-| CONT-01 | — | Pending |
-| CONT-02 | — | Pending |
-| CONT-03 | — | Pending |
-| NAV-01 | — | Pending |
-| NAV-02 | — | Pending |
-| NAV-03 | — | Pending |
-| NAV-04 | — | Pending |
-| EXER-01 | — | Pending |
-| EXER-02 | — | Pending |
-| EXER-03 | — | Pending |
-| EXER-04 | — | Pending |
-| EXER-05 | — | Pending |
-| TECH-01 | — | Pending |
-| TECH-02 | — | Pending |
-| TECH-03 | — | Pending |
-| TECH-04 | — | Pending |
+| VIEW-01 | Phase 2 | Pending |
+| VIEW-02 | Phase 2 | Pending |
+| VIEW-03 | Phase 2 | Pending |
+| VIEW-04 | Phase 3 | Pending |
+| VIEW-05 | Phase 3 | Pending |
+| VIEW-06 | Phase 3 | Pending |
+| CONT-01 | Phase 4 | Pending |
+| CONT-02 | Phase 4 | Pending |
+| CONT-03 | Phase 4 | Pending |
+| NAV-01 | Phase 2 | Pending |
+| NAV-02 | Phase 2 | Pending |
+| NAV-03 | Phase 5 | Pending |
+| NAV-04 | Phase 2 | Pending |
+| EXER-01 | Phase 4 | Pending |
+| EXER-02 | Phase 4 | Pending |
+| EXER-03 | Phase 4 | Pending |
+| EXER-04 | Phase 4 | Pending |
+| EXER-05 | Phase 4 | Pending |
+| TECH-01 | Phase 1 | Pending |
+| TECH-02 | Phase 1 | Pending |
+| TECH-03 | Phase 1 | Pending |
+| TECH-04 | Phase 1 | Pending |
 
 **Coverage:**
 - v1 requirements: 22 total
-- Mapped to phases: 0
-- Unmapped: 22 ⚠️
+- Mapped to phases: 22
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-23*
-*Last updated: 2026-02-23 after initial definition*
+*Last updated: 2026-02-23 after roadmap creation — all 22 requirements mapped*
