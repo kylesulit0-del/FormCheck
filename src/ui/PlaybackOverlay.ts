@@ -41,6 +41,16 @@ export function mountPlaybackOverlay(container: HTMLElement): void {
     cameraRow.appendChild(btn)
   }
 
+  // Annotation toggle button
+  const annotBtn = document.createElement('button')
+  annotBtn.type = 'button'
+  annotBtn.textContent = 'Labels'
+  annotBtn.addEventListener('click', () => {
+    const { showAnnotations, setShowAnnotations } = appStore.getState()
+    setShowAnnotations(!showAnnotations)
+  })
+  cameraRow.appendChild(annotBtn)
+
   // --- Playback row (play/pause + speed buttons) ---
   const playbackRow = document.createElement('div')
   playbackRow.className = 'flex items-center gap-2'
@@ -88,10 +98,16 @@ export function mountPlaybackOverlay(container: HTMLElement): void {
 
   updateSpeedHighlight()
 
+  function updateAnnotBtn() {
+    annotBtn.className = appStore.getState().showAnnotations ? btnActive : btnInactive
+  }
+  updateAnnotBtn()
+
   // Subscribe to store changes
   appStore.subscribe(() => {
     updatePlayIcon()
     updateSpeedHighlight()
+    updateAnnotBtn()
   })
 
   // --- Timeline scrub slider ---

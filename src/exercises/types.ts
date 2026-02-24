@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import type { MannequinRig } from '../mannequin/MannequinBuilder'
+import type { JointName } from '../mannequin/mannequin.types'
 
 /**
  * MuscleId — all highlightable muscle groups in FormCheck.
@@ -59,6 +60,12 @@ export interface ExerciseDefinition {
    * Format: "Mistake — correction" (em dash separator).
    */
   commonMistakes: string[]
+
+  /**
+   * Short form-cue labels anchored to joints on the 3D mannequin.
+   * Each cue specifies a joint anchor point and a short text label.
+   */
+  formCues?: { joint: JointName; text: string }[]
 
   /**
    * Whether this exercise has ghost equipment (e.g. ghost barbell overlay).

@@ -184,6 +184,13 @@ export const squat: ExerciseDefinition = {
     'Excessive forward lean — improve ankle mobility and keep chest up',
   ],
 
+  formCues: [
+    { joint: JointName.chest, text: 'Chest up' },
+    { joint: JointName.l_knee, text: 'Knees over toes' },
+    { joint: JointName.l_ankle, text: 'Drive through heels' },
+    { joint: JointName.pelvis, text: 'Hip hinge back' },
+  ],
+
   hasGhostEquipment: false,
 
   buildAnimation: buildSquatClip,

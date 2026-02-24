@@ -122,6 +122,12 @@ export const benchPress: ExerciseDefinition = {
     'Lifting hips off bench — maintain contact to protect lower back',
   ],
 
+  formCues: [
+    { joint: JointName.l_elbow, text: 'Elbows at 45°' },
+    { joint: JointName.chest, text: 'Bar to mid-chest' },
+    { joint: JointName.l_ankle, text: 'Feet planted' },
+  ],
+
   hasGhostEquipment: false,
   buildAnimation: buildBenchPressClip,
 }

@@ -141,6 +141,12 @@ export const deadlift: ExerciseDefinition = {
     'Bar drifting away from body — keep the bar close to your shins and thighs',
   ],
 
+  formCues: [
+    { joint: JointName.spine, text: 'Neutral spine' },
+    { joint: JointName.l_ankle, text: 'Push floor away' },
+    { joint: JointName.l_wrist, text: 'Bar close to body' },
+  ],
+
   hasGhostEquipment: false,
   buildAnimation: buildDeadliftClip,
 }

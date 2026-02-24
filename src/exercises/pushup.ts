@@ -134,6 +134,12 @@ export const pushup: ExerciseDefinition = {
     'Incomplete range of motion — lower until chest is near the floor',
   ],
 
+  formCues: [
+    { joint: JointName.spine, text: 'Straight body line' },
+    { joint: JointName.l_elbow, text: 'Elbows at 45°' },
+    { joint: JointName.pelvis, text: 'Core tight' },
+  ],
+
   hasGhostEquipment: false,
   buildAnimation: buildPushupClip,
 }

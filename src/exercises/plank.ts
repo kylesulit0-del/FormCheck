@@ -128,6 +128,12 @@ export const plank: ExerciseDefinition = {
     'Looking straight ahead — keep neck neutral, gaze at the floor below you',
   ],
 
+  formCues: [
+    { joint: JointName.neck, text: 'Neutral neck' },
+    { joint: JointName.pelvis, text: 'Core engaged' },
+    { joint: JointName.l_hip, text: 'Squeeze glutes' },
+  ],
+
   hasGhostEquipment: false,
   buildAnimation: buildPlankClip,
 }

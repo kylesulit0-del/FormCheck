@@ -14,7 +14,9 @@ import { mountFormGuide } from './ui/FormGuide'
 import { mountPlaybackOverlay } from './ui/PlaybackOverlay'
 import { registerControls } from './core/cameraPresets'
 import { setAnimationController } from './core/animationRef'
+import { setRigJoints } from './core/rigRef'
 import { applyMuscleHighlights } from './mannequin/highlighter'
+import { mountAnnotationOverlay } from './ui/AnnotationOverlay'
 
 // Current exercise state — replaced on exercise switch
 let animRoot: THREE.Object3D | null = null
@@ -67,6 +69,9 @@ async function loadExercise(id: string): Promise<void> {
   animationController.setPaused(!appStore.getState().isPlaying)
   animationController.setSpeed(appStore.getState().playbackSpeed)
   setAnimationController(animationController)
+
+  // Expose rig joints for annotation overlays (null for GLB models)
+  setRigJoints(rig?.joints ?? null)
 
   // Highlight muscles on the mannequin (skip for GLB models)
   if (rig) {
@@ -122,6 +127,7 @@ async function init() {
   mountFormGuide(formGuide)
 
   mountPlaybackOverlay(centerPanel)
+  mountAnnotationOverlay(centerPanel)
 
   // Start render loop
   const loop = createRenderLoop(renderer, scene, camera, () => {
