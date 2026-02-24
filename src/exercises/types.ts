@@ -67,6 +67,19 @@ export interface ExerciseDefinition {
   hasGhostEquipment: boolean
 
   /**
+   * Path to a GLB file with a skinned mesh + embedded animation.
+   * When present, the app loads the GLB instead of using the procedural mannequin.
+   * Example: '/models/exercises/squat.glb'
+   */
+  modelPath?: string
+
+  /**
+   * Which animation clip to play from the GLB file.
+   * Defaults to the first clip if omitted.
+   */
+  animationClipName?: string
+
+  /**
    * Build and return the THREE.AnimationClip for this exercise.
    *
    * @param rig - The live MannequinRig from buildMannequin().

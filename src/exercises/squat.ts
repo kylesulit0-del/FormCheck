@@ -162,6 +162,9 @@ export const squat: ExerciseDefinition = {
   id: 'squat',
   name: 'Squat',
 
+  // Enable once a GLB file is placed at public/models/exercises/squat.glb
+  // modelPath: '/models/exercises/squat.glb',
+
   primaryMuscles: ['quads', 'glutes'],
   secondaryMuscles: ['hamstrings', 'core', 'lower-back'],
 
