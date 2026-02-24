@@ -126,7 +126,7 @@ async function init() {
   const formGuide = document.getElementById('form-guide')!
   mountFormGuide(formGuide)
 
-  mountPlaybackOverlay(centerPanel)
+  mountPlaybackOverlay(document.getElementById('control-bar')!)
   mountAnnotationOverlay(centerPanel)
 
   // Panel collapse controls

@@ -26,3 +26,40 @@
   opacity: 0;
   pointer-events: none;
 }
+
+/* Timeline scrubber — YouTube seekbar style */
+input[type="range"]#timeline {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    var(--color-accent) 0%,
+    var(--color-accent) var(--fill-pct, 0%),
+    oklch(35% 0.01 264) var(--fill-pct, 0%),
+    oklch(35% 0.01 264) 100%
+  );
+}
+
+input[type="range"]#timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]#timeline::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
