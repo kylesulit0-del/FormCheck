@@ -46,7 +46,9 @@ Plans:
   3. User can click-drag on the viewer canvas to rotate the model and scroll to zoom in and out
   4. User can click Pause to stop the animation and Play to resume it from where it stopped
   5. User can click any exercise in the left panel to switch to it; the viewer loads and loops that exercise
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 02-01-PLAN.md — Close UI gaps: exercise selector left-border indicator, collapsible side panels, and animation-synchronized active step highlighting
 
 ### Phase 3: Playback Controls
 **Goal**: Users have full control over how they watch the animation — speed, frame position, and camera angle — enabling detailed form study
@@ -87,7 +89,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-02-24 |
-| 2. 3D Viewer Core | 0/TBD | Not started | - |
+| 2. 3D Viewer Core | 0/1 | In progress | - |
 | 3. Playback Controls | 0/TBD | Not started | - |
 | 4. Exercise Content | 0/TBD | Not started | - |
 | 5. Mobile and Polish | 0/TBD | Not started | - |
