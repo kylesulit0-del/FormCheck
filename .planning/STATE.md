@@ -10,24 +10,24 @@ See: .planning/PROJECT.md (updated 2026-02-23)
 ## Current Position
 
 Phase: 1 of 5 (Foundation)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-02-24 — Completed 01-02-PLAN.md (mannequin mesh + scene infrastructure)
+Plan: 3 of 3 in current phase (PHASE COMPLETE)
+Status: Phase 1 complete — ready for Phase 2
+Last activity: 2026-02-24 — Completed 01-03-PLAN.md (animation system + squat + exercise registry)
 
-Progress: [██░░░░░░░░] 13% (2 of 15 estimated plans)
+Progress: [███░░░░░░░] 20% (3 of 15 estimated plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
+- Total plans completed: 3
 - Average duration: 3 min
-- Total execution time: 0.10 hours
+- Total execution time: 0.15 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1 - Foundation | 2/3 | 6 min | 3 min |
+| 1 - Foundation | 3/3 | 9 min | 3 min |
 
 **Recent Trend:**
 - Last 5 plans: 3 min
@@ -52,6 +52,9 @@ Recent decisions affecting current work:
 - [01-02]: Mannequin pelvis at y=0.97 so feet land near y=0 — total height ~1.75m
 - [01-02]: Shoulder joints at chest level (no clavicle bone) — simpler hierarchy adequate for exercise animations
 - [01-02]: JointName enum values are the animation contract — Object3D.name must match exactly, never rename after Phase 1
+- [01-03]: AnimationController uses its own THREE.Clock (not shared with render loop) — avoids accumulated delta drift
+- [01-03]: buildAnimation(rig) receives full MannequinRig — extensible for future IK or equipment placement without interface break
+- [01-03]: Pelvis+spine rotation drives squat depth (not Y-translation) — keeps feet planted without IK
 
 ### Pending Todos
 
@@ -59,12 +62,11 @@ None.
 
 ### Blockers/Concerns
 
-- Skeleton source decision: Quaternius Universal Base Characters (CC0) vs Mixamo auto-rigged model — must decide in Phase 1 before writing any animation code
 - Mixamo commercial license: Confirm current Adobe terms cover FormCheck's public website use case before Phase 4 content authoring
-- Programmatic animation quality ceiling: Actual effort per exercise is unknown until first exercise is authored end-to-end — validate in Phase 1
+- [RESOLVED 01-03]: Programmatic animation quality ceiling — first exercise (squat) authored end-to-end; pipeline validated, effort is low (~30 min/exercise for new keyframe sets)
 
 ## Session Continuity
 
 Last session: 2026-02-24
-Stopped at: Completed 01-02-PLAN.md — mannequin mesh hierarchy + Three.js scene + Zustand store complete
+Stopped at: Completed 01-03-PLAN.md — animation system + squat exercise + registry + CONTRIBUTING.md. Phase 1 complete.
 Resume file: None

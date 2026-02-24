@@ -12,7 +12,7 @@ FormCheck ships as a static single-page site delivering interactive 3D exercise 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Project scaffold, asset pipeline, exercise registry, and static deployment setup
+- [x] **Phase 1: Foundation** - Project scaffold, asset pipeline, exercise registry, and static deployment setup (completed 2026-02-24)
 - [ ] **Phase 2: 3D Viewer Core** - Humanoid model loads and loops in a three-panel layout with orbit controls
 - [ ] **Phase 3: Playback Controls** - Speed, timeline scrub, camera presets, and exercise switching wired to store
 - [ ] **Phase 4: Exercise Content** - All 5 starter exercises fully authored with animations, form steps, and common mistakes
@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The `ExerciseDefinition` TypeScript interface is defined and at least one exercise is registered in the exercise registry
   4. The dev can add a new exercise by creating one file in `exercises/` and following a documented workflow
   5. `npm run build` produces a `dist/` folder deployable to Vercel/Netlify with no build errors
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 Plans:
 - [x] 01-01-PLAN.md — Scaffold Vite project, install dependencies, configure Tailwind v4, establish Draco asset pipeline with compressed barbell GLB
 - [x] 01-02-PLAN.md — Build programmatic mannequin mesh hierarchy and Three.js scene rendering infrastructure
@@ -86,7 +86,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 2/3 | In Progress|  |
+| 1. Foundation | 3/3 | Complete   | 2026-02-24 |
 | 2. 3D Viewer Core | 0/TBD | Not started | - |
 | 3. Playback Controls | 0/TBD | Not started | - |
 | 4. Exercise Content | 0/TBD | Not started | - |
