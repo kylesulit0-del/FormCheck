@@ -5,8 +5,9 @@ import { getAnimationController } from '../core/animationRef'
 const SPEEDS = [0.5, 1, 2] as const
 const CAMERA_PRESETS: { label: string; name: PresetName }[] = [
   { label: 'Front', name: 'front' },
-  { label: 'Side', name: 'side' },
-  { label: 'Back', name: 'back' },
+  { label: 'Left',  name: 'left' },
+  { label: 'Right', name: 'right' },
+  { label: 'Back',  name: 'back' },
 ]
 
 /**

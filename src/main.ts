@@ -12,7 +12,7 @@ import { appStore } from './core/store'
 import { mountExerciseSelector } from './ui/ExerciseSelector'
 import { mountFormGuide } from './ui/FormGuide'
 import { mountPlaybackOverlay } from './ui/PlaybackOverlay'
-import { registerControls } from './core/cameraPresets'
+import { registerControls, tickCameraAnimation } from './core/cameraPresets'
 import { setAnimationController } from './core/animationRef'
 import { setRigJoints } from './core/rigRef'
 import { applyMuscleHighlights } from './mannequin/highlighter'
@@ -154,6 +154,7 @@ async function init() {
 
   // Start render loop
   const loop = createRenderLoop(renderer, scene, camera, () => {
+    tickCameraAnimation()
     controls.update()
     if (animationController && !appStore.getState().isScrubbing) {
       animationController.update()
