@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-23)
 
 **Core value:** A user picks an exercise and immediately sees a clear, interactive 3D demonstration of proper form — from any angle, at any speed.
-**Current focus:** Phase 2 — 3D Viewer Core
+**Current focus:** Phase 3 — Playback Controls
 
 ## Current Position
 
-Phase: 2 of 5 (3D Viewer Core)
+Phase: 3 of 5 (Playback Controls)
 Plan: 1 of 1 in current phase (PHASE COMPLETE)
-Status: Phase 2 complete — ready for Phase 3
-Last activity: 2026-02-24 — Completed 02-01-PLAN.md (UI gaps: left-border indicator, collapsible panels, animated step highlighting)
+Status: Phase 3 complete — ready for Phase 4
+Last activity: 2026-02-24 — Completed 03-01-PLAN.md (single-row control bar, smooth camera lerp, timeline scrubber, speed buttons)
 
-Progress: [████░░░░░░] 27% (4 of 15 estimated plans)
+Progress: [█████░░░░░] 33% (5 of 15 estimated plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 3 min
-- Total execution time: 0.20 hours
+- Total plans completed: 5
+- Average duration: 2 min
+- Total execution time: 0.23 hours
 
 **By Phase:**
 
@@ -29,6 +29,7 @@ Progress: [████░░░░░░] 27% (4 of 15 estimated plans)
 |-------|-------|-------|----------|
 | 1 - Foundation | 3/3 | 9 min | 3 min |
 | 2 - 3D Viewer Core | 1/1 | 2 min | 2 min |
+| 3 - Playback Controls | 1/1 | 2 min | 2 min |
 
 **Recent Trend:**
 - Last 5 plans: 2-3 min
@@ -60,6 +61,10 @@ Recent decisions affecting current work:
 - [02-01]: Panel collapse uses CSS width/opacity/padding transitions (200ms) with Zustand store state; toggle buttons float in viewer corners
 - [02-01]: Form guide step sync reads AnimationController time via RAF (not Zustand) — avoids storing per-frame animation time in store
 - [02-01]: DOM re-queried every RAF frame instead of caching — prevents stale references after exercise switch (innerHTML replacement)
+- [03-01]: Control bar sits structurally below #panel-center in a flex-col wrapper — not floating over the canvas
+- [03-01]: Camera presets use F/L/R/B abbreviation pills (Claude's discretion per CONTEXT.md); lerp factor 0.18/frame, snap at <0.005 units
+- [03-01]: Timeline gradient fill via --fill-pct CSS var updated in RAF loop — no Zustand per-frame animation time storage
+- [03-01]: OrbitControls 'start' event listener cancels _targetPosition to prevent camera fighting user drag
 
 ### Pending Todos
 
@@ -73,5 +78,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-24
-Stopped at: Completed 02-01-PLAN.md — UI gap closure (left-border indicator, collapsible panels, animation step sync). Phase 2 complete.
+Stopped at: Completed 03-01-PLAN.md — single-row control bar (Play/Pause, timeline scrubber, speed buttons, camera presets). Phase 3 complete.
 Resume file: None

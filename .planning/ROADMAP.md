@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Project scaffold, asset pipeline, exercise registry, and static deployment setup (completed 2026-02-24)
 - [x] **Phase 2: 3D Viewer Core** - Humanoid model loads and loops in a three-panel layout with orbit controls (completed 2026-02-24)
-- [ ] **Phase 3: Playback Controls** - Speed, timeline scrub, camera presets, and exercise switching wired to store
+- [x] **Phase 3: Playback Controls** - Speed, timeline scrub, camera presets, and exercise switching wired to store (completed 2026-02-24)
 - [ ] **Phase 4: Exercise Content** - All 5 starter exercises fully authored with animations, form steps, and common mistakes
 - [ ] **Phase 5: Mobile and Polish** - Responsive layout, performance targets met, pre-launch verification
 
@@ -58,9 +58,9 @@ Plans:
   1. User can select slow, normal, or fast playback speed and the animation visibly changes pace with no stutter or jump at loop boundaries
   2. User can click Front, Side, or Back preset buttons and the camera moves to the corresponding position around the model
   3. User can drag a timeline slider to scrub through the animation frame by frame and release it to resume playback from that position
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 03-01-PLAN.md — Rebuild control bar as single-row layout with smooth camera presets, styled timeline scrubber, and speed buttons
+- [x] 03-01-PLAN.md — Rebuild control bar as single-row layout with smooth camera presets, styled timeline scrubber, and speed buttons
 
 ### Phase 4: Exercise Content
 **Goal**: All five starter exercises are fully playable and documented — each with a smooth animation, accurate step-by-step form instructions, common mistakes, and muscle highlights — so the site delivers its complete core value
@@ -92,6 +92,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-02-24 |
 | 2. 3D Viewer Core | 1/1 | Complete   | 2026-02-24 |
-| 3. Playback Controls | 0/1 | Not started | - |
+| 3. Playback Controls | 1/1 | Complete   | 2026-02-24 |
 | 4. Exercise Content | 0/TBD | Not started | - |
 | 5. Mobile and Polish | 0/TBD | Not started | - |

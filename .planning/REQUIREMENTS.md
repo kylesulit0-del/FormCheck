@@ -12,9 +12,9 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **VIEW-01**: User sees a 3D humanoid mannequin performing the selected exercise on continuous loop
 - [ ] **VIEW-02**: User can click-drag to rotate the 3D model and scroll to zoom in/out
 - [ ] **VIEW-03**: User can pause and resume the exercise animation
-- [ ] **VIEW-04**: User can change playback speed (slow-mo, normal, fast)
-- [ ] **VIEW-05**: User can switch between camera angle presets (front, side, back)
-- [ ] **VIEW-06**: User can scrub through the animation timeline frame-by-frame via a slider
+- [x] **VIEW-04**: User can change playback speed (slow-mo, normal, fast)
+- [x] **VIEW-05**: User can switch between camera angle presets (front, side, back)
+- [x] **VIEW-06**: User can scrub through the animation timeline frame-by-frame via a slider
 
 ### Content
 
@@ -84,19 +84,19 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| VIEW-01 | Phase 2 | Pending |
-| VIEW-02 | Phase 2 | Pending |
-| VIEW-03 | Phase 2 | Pending |
-| VIEW-04 | Phase 3 | Pending |
-| VIEW-05 | Phase 3 | Pending |
-| VIEW-06 | Phase 3 | Pending |
+| VIEW-01 | Phase 2 | Complete |
+| VIEW-02 | Phase 2 | Complete |
+| VIEW-03 | Phase 2 | Complete |
+| VIEW-04 | Phase 3 | Complete |
+| VIEW-05 | Phase 3 | Complete |
+| VIEW-06 | Phase 3 | Complete |
 | CONT-01 | Phase 4 | Pending |
 | CONT-02 | Phase 4 | Pending |
 | CONT-03 | Phase 4 | Pending |
-| NAV-01 | Phase 2 | Pending |
-| NAV-02 | Phase 2 | Pending |
+| NAV-01 | Phase 2 | Complete |
+| NAV-02 | Phase 2 | Complete |
 | NAV-03 | Phase 5 | Pending |
-| NAV-04 | Phase 2 | Pending |
+| NAV-04 | Phase 2 | Complete |
 | EXER-01 | Phase 4 | Pending |
 | EXER-02 | Phase 4 | Pending |
 | EXER-03 | Phase 4 | Pending |
@@ -114,4 +114,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-23*
-*Last updated: 2026-02-23 after roadmap creation — all 22 requirements mapped*
+*Last updated: 2026-02-24 after Phase 3 completion — VIEW-04/05/06 complete, Phase 2 requirements marked complete*
