@@ -1,0 +1,69 @@
+import * as THREE from 'three'
+
+/**
+ * AnimationController — wraps THREE.AnimationMixer with play/pause/speed controls.
+ *
+ * Usage:
+ *   const controller = new AnimationController(rig.root)
+ *   controller.play(clip)
+ *   // In render loop:
+ *   controller.update()
+ */
+export class AnimationController {
+  private mixer: THREE.AnimationMixer
+  private clock: THREE.Clock
+  private currentAction: THREE.AnimationAction | null = null
+
+  /**
+   * @param root - The root Object3D of the animated hierarchy (e.g. mannequin pelvis).
+   *               The AnimationMixer is created with this root.
+   */
+  constructor(root: THREE.Object3D) {
+    this.mixer = new THREE.AnimationMixer(root)
+    this.clock = new THREE.Clock()
+  }
+
+  /**
+   * Stop any current action and play the given clip on LoopRepeat (infinite).
+   *
+   * @param clip - AnimationClip to play (build with buildClip / buildQuatTrack)
+   */
+  play(clip: THREE.AnimationClip): void {
+    if (this.currentAction) {
+      this.currentAction.stop()
+    }
+    this.currentAction = this.mixer.clipAction(clip)
+    this.currentAction.setLoop(THREE.LoopRepeat, Infinity)
+    this.currentAction.play()
+  }
+
+  /**
+   * Advance the mixer by the elapsed frame delta.
+   * Call this once per render frame (inside the render loop onTick).
+   */
+  update(): void {
+    const delta = this.clock.getDelta()
+    this.mixer.update(delta)
+  }
+
+  /**
+   * Set playback speed (timeScale on the current action).
+   * 1.0 = normal speed, 0.5 = half speed, 2.0 = double speed.
+   *
+   * @param speed - Time scale multiplier
+   */
+  setSpeed(speed: number): void {
+    this.mixer.timeScale = speed
+  }
+
+  /**
+   * Pause or resume playback.
+   *
+   * @param paused - true to pause, false to resume
+   */
+  setPaused(paused: boolean): void {
+    if (this.currentAction) {
+      this.currentAction.paused = paused
+    }
+  }
+}
