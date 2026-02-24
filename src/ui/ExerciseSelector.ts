@@ -15,10 +15,10 @@ export function mountExerciseSelector(container: HTMLElement): void {
       btn.type = 'button'
       btn.textContent = exercise.name
       btn.className =
-        'w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ' +
+        'w-full text-left px-3 py-2 text-sm transition-colors border-l-2 ' +
         (id === selectedExerciseId
-          ? 'bg-accent/20 text-accent font-medium'
-          : 'text-white/70 hover:bg-white/5 hover:text-white')
+          ? 'border-accent text-accent font-medium bg-accent/10'
+          : 'border-transparent text-white/70 hover:text-white hover:bg-white/5')
 
       btn.addEventListener('click', () => {
         appStore.getState().setExercise(id)
