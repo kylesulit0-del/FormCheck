@@ -11,6 +11,7 @@ import { appStore } from './core/store'
 import { mountExerciseSelector } from './ui/ExerciseSelector'
 import { mountFormGuide } from './ui/FormGuide'
 import { mountPlaybackOverlay } from './ui/PlaybackOverlay'
+import { registerControls } from './core/cameraPresets'
 
 // Current exercise state — replaced on exercise switch
 let animRoot: THREE.Object3D | null = null
@@ -76,6 +77,9 @@ async function init() {
   controls.maxDistance = 8
   controls.maxPolarAngle = Math.PI * 0.85
   controls.update()
+
+  // Register controls for camera presets
+  registerControls(controls, camera)
 
   // Load initial exercise
   const initialId = appStore.getState().selectedExerciseId

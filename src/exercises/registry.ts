@@ -1,5 +1,9 @@
 import type { ExerciseDefinition } from './types'
 import { squat } from './squat'
+import { benchPress } from './benchPress'
+import { pushup } from './pushup'
+import { deadlift } from './deadlift'
+import { plank } from './plank'
 
 /**
  * Exercise registry — the single source of truth for all exercises.
@@ -13,6 +17,10 @@ import { squat } from './squat'
  */
 export const exerciseRegistry = new Map<string, ExerciseDefinition>([
   [squat.id, squat],
+  [benchPress.id, benchPress],
+  [pushup.id, pushup],
+  [deadlift.id, deadlift],
+  [plank.id, plank],
 ])
 
 /**
