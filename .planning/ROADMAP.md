@@ -13,7 +13,7 @@ FormCheck ships as a static single-page site delivering interactive 3D exercise 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Project scaffold, asset pipeline, exercise registry, and static deployment setup (completed 2026-02-24)
-- [ ] **Phase 2: 3D Viewer Core** - Humanoid model loads and loops in a three-panel layout with orbit controls
+- [x] **Phase 2: 3D Viewer Core** - Humanoid model loads and loops in a three-panel layout with orbit controls (completed 2026-02-24)
 - [ ] **Phase 3: Playback Controls** - Speed, timeline scrub, camera presets, and exercise switching wired to store
 - [ ] **Phase 4: Exercise Content** - All 5 starter exercises fully authored with animations, form steps, and common mistakes
 - [ ] **Phase 5: Mobile and Polish** - Responsive layout, performance targets met, pre-launch verification
@@ -34,7 +34,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md — Scaffold Vite project, install dependencies, configure Tailwind v4, establish Draco asset pipeline with compressed barbell GLB
 - [x] 01-02-PLAN.md — Build programmatic mannequin mesh hierarchy and Three.js scene rendering infrastructure
-- [ ] 01-03-PLAN.md — Create animation system, exercise registry with squat exercise, wire to mannequin, and CONTRIBUTING.md
+- [x] 01-03-PLAN.md — Create animation system, exercise registry with squat exercise, wire to mannequin, and CONTRIBUTING.md
 
 ### Phase 2: 3D Viewer Core
 **Goal**: A user visiting the site sees a humanoid mannequin performing an exercise on loop in a three-panel layout, can rotate and zoom the model, and can pause and resume the animation
@@ -46,9 +46,9 @@ Plans:
   3. User can click-drag on the viewer canvas to rotate the model and scroll to zoom in and out
   4. User can click Pause to stop the animation and Play to resume it from where it stopped
   5. User can click any exercise in the left panel to switch to it; the viewer loads and loops that exercise
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 02-01-PLAN.md — Close UI gaps: exercise selector left-border indicator, collapsible side panels, and animation-synchronized active step highlighting
+- [x] 02-01-PLAN.md — Close UI gaps: exercise selector left-border indicator, collapsible side panels, and animation-synchronized active step highlighting
 
 ### Phase 3: Playback Controls
 **Goal**: Users have full control over how they watch the animation — speed, frame position, and camera angle — enabling detailed form study
@@ -89,7 +89,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-02-24 |
-| 2. 3D Viewer Core | 0/1 | In progress | - |
+| 2. 3D Viewer Core | 1/1 | Complete   | 2026-02-24 |
 | 3. Playback Controls | 0/TBD | Not started | - |
 | 4. Exercise Content | 0/TBD | Not started | - |
 | 5. Mobile and Polish | 0/TBD | Not started | - |

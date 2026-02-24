@@ -5,32 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-02-23)
 
 **Core value:** A user picks an exercise and immediately sees a clear, interactive 3D demonstration of proper form — from any angle, at any speed.
-**Current focus:** Phase 1 — Foundation
+**Current focus:** Phase 2 — 3D Viewer Core
 
 ## Current Position
 
-Phase: 1 of 5 (Foundation)
-Plan: 3 of 3 in current phase (PHASE COMPLETE)
-Status: Phase 1 complete — ready for Phase 2
-Last activity: 2026-02-24 — Completed 01-03-PLAN.md (animation system + squat + exercise registry)
+Phase: 2 of 5 (3D Viewer Core)
+Plan: 1 of 1 in current phase (PHASE COMPLETE)
+Status: Phase 2 complete — ready for Phase 3
+Last activity: 2026-02-24 — Completed 02-01-PLAN.md (UI gaps: left-border indicator, collapsible panels, animated step highlighting)
 
-Progress: [███░░░░░░░] 20% (3 of 15 estimated plans)
+Progress: [████░░░░░░] 27% (4 of 15 estimated plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: 3 min
-- Total execution time: 0.15 hours
+- Total execution time: 0.20 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 - Foundation | 3/3 | 9 min | 3 min |
+| 2 - 3D Viewer Core | 1/1 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 3 min
+- Last 5 plans: 2-3 min
 - Trend: consistent
 
 *Updated after each plan completion*
@@ -55,6 +56,10 @@ Recent decisions affecting current work:
 - [01-03]: AnimationController uses its own THREE.Clock (not shared with render loop) — avoids accumulated delta drift
 - [01-03]: buildAnimation(rig) receives full MannequinRig — extensible for future IK or equipment placement without interface break
 - [01-03]: Pelvis+spine rotation drives squat depth (not Y-translation) — keeps feet planted without IK
+- [02-01]: Active exercise indicator uses border-l-2 border-accent left border (not background highlight) — CONTEXT.md locked decision
+- [02-01]: Panel collapse uses CSS width/opacity/padding transitions (200ms) with Zustand store state; toggle buttons float in viewer corners
+- [02-01]: Form guide step sync reads AnimationController time via RAF (not Zustand) — avoids storing per-frame animation time in store
+- [02-01]: DOM re-queried every RAF frame instead of caching — prevents stale references after exercise switch (innerHTML replacement)
 
 ### Pending Todos
 
@@ -68,5 +73,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-24
-Stopped at: Completed 01-03-PLAN.md — animation system + squat exercise + registry + CONTRIBUTING.md. Phase 1 complete.
+Stopped at: Completed 02-01-PLAN.md — UI gap closure (left-border indicator, collapsible panels, animation step sync). Phase 2 complete.
 Resume file: None
