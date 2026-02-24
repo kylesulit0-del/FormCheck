@@ -39,7 +39,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Technical Foundation
 
-- [ ] **TECH-01**: Exercise data follows a config-driven pattern so new exercises can be added via a documented dev workflow
+- [x] **TECH-01**: Exercise data follows a config-driven pattern so new exercises can be added via a documented dev workflow
 - [ ] **TECH-02**: 3D animations are generated programmatically or via a repeatable pipeline (not dependent on purchasing pre-made mocap files)
 - [x] **TECH-03**: Site deploys as a static site (Vercel/Netlify) with no backend
 - [x] **TECH-04**: GLB/3D assets are compressed (Draco) for fast loading
@@ -102,7 +102,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | EXER-03 | Phase 4 | Pending |
 | EXER-04 | Phase 4 | Pending |
 | EXER-05 | Phase 4 | Pending |
-| TECH-01 | Phase 1 | Pending |
+| TECH-01 | Phase 1 | Complete |
 | TECH-02 | Phase 1 | Pending |
 | TECH-03 | Phase 1 | Complete |
 | TECH-04 | Phase 1 | Complete |
