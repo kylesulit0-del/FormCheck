@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-23)
 ## Current Position
 
 Phase: 1 of 5 (Foundation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-23 — Roadmap created, ready for Phase 1 planning
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-24 — Completed 01-01-PLAN.md (scaffold + Draco pipeline)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 7% (1 of 15 estimated plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 3 min
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 1 - Foundation | 1/3 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: —
+- Last 5 plans: 3 min
 - Trend: —
 
 *Updated after each plan completion*
@@ -46,10 +46,13 @@ Recent decisions affecting current work:
 - [Pre-Phase 1]: Draco compression via gltf-transform must be part of the asset pipeline from day one — retrofitting breaks model-animation name relationships
 - [Pre-Phase 1]: Hybrid animation approach: Mixamo GLBs for v1 exercises, QuaternionKeyframeTrack programmatic fallback for exercises without Mixamo equivalents
 - [Pre-Phase 1]: No React — vanilla Three.js + Vite + TypeScript + Tailwind v4 + Zustand (no React dependency)
+- [01-01]: Use @gltf-transform/core for programmatic GLB generation (not Three.js GLTFExporter) — Node.js compatible, no DOM dependency
+- [01-01]: fs.cpSync(recursive:true) for Draco decoder copy — handles gltf/ subdirectory that fs.copyFileSync fails on Windows
+- [01-01]: Barbell geometry along X-axis: center bar 1.8m, plates +-0.82m, collars +-0.60m from origin
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
@@ -59,6 +62,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-23
-Stopped at: Roadmap created — all 22 v1 requirements mapped to 5 phases
+Last session: 2026-02-24
+Stopped at: Completed 01-01-PLAN.md — scaffold + Draco pipeline complete
 Resume file: None
