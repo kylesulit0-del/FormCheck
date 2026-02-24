@@ -1,14 +1,12 @@
 import './style.css'
+import { scene, camera, renderer } from './core/renderer'
+import { createRenderLoop } from './core/loop'
+import { buildMannequin } from './mannequin/MannequinBuilder'
 
-console.log('FormCheck loaded')
+// Build and add the mannequin to the scene
+const rig = buildMannequin()
+scene.add(rig.root)
 
-const app = document.querySelector<HTMLDivElement>('#app')!
-
-app.innerHTML = `
-  <div class="flex items-center justify-center min-h-screen">
-    <div class="bg-surface rounded-lg p-8 text-center">
-      <h1 class="text-2xl font-bold text-mannequin mb-2">FormCheck</h1>
-      <p class="text-white/60">3D exercise form demonstration</p>
-    </div>
-  </div>
-`
+// Start render loop (static display — animation added in Plan 03)
+const loop = createRenderLoop(renderer, scene, camera)
+loop.start()
