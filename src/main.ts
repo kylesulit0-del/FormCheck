@@ -1,22 +1,39 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import './style.css'
-import { scene, camera, renderer } from './core/renderer'
+import { scene, camera, renderer, initRenderer } from './core/renderer'
 import { createRenderLoop } from './core/loop'
 import { buildMannequin } from './mannequin/MannequinBuilder'
 import { AnimationController } from './animation/AnimationController'
 import { getExercise } from './exercises/registry'
 import { loadExerciseModel } from './loaders/modelLoader'
 import { appStore } from './core/store'
+import { mountExerciseSelector } from './ui/ExerciseSelector'
+import { mountFormGuide } from './ui/FormGuide'
+import { mountPlaybackOverlay } from './ui/PlaybackOverlay'
 
-async function init() {
-  const initialExerciseId = appStore.getState().selectedExerciseId
-  const exercise = getExercise(initialExerciseId)
+// Current exercise state — replaced on exercise switch
+let animRoot: THREE.Object3D | null = null
+let animationController: AnimationController | null = null
 
-  let animRoot: THREE.Object3D
+/**
+ * Load an exercise by ID: clean up old model/controller, set up new one.
+ */
+async function loadExercise(id: string): Promise<void> {
+  // Clean up previous exercise
+  if (animationController) {
+    animationController.dispose()
+    animationController = null
+  }
+  if (animRoot) {
+    scene.remove(animRoot)
+    animRoot = null
+  }
+
+  const exercise = getExercise(id)
   let clip: THREE.AnimationClip
 
   if (exercise.modelPath) {
-    // GLB path: load the model and use its embedded animation
     const model = await loadExerciseModel(exercise.modelPath)
     scene.add(model.scene)
     animRoot = model.scene
@@ -33,23 +50,40 @@ async function init() {
     }
     clip = found
   } else {
-    // Procedural fallback: build mannequin rig and generate clip programmatically
     const rig = buildMannequin()
     scene.add(rig.root)
     animRoot = rig.root
     clip = exercise.buildAnimation(rig)
   }
 
-  // Create AnimationController and begin looping
-  const animationController = new AnimationController(animRoot)
+  animationController = new AnimationController(animRoot)
   animationController.play(clip)
-
-  // Apply initial store state
   animationController.setPaused(!appStore.getState().isPlaying)
   animationController.setSpeed(appStore.getState().playbackSpeed)
+}
 
-  // Subscribe to Zustand store — react to isPlaying and playbackSpeed changes
+async function init() {
+  // Mount renderer into center panel
+  const centerPanel = document.getElementById('panel-center')!
+  initRenderer(centerPanel)
+
+  // OrbitControls
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.target.set(0, 0.9, 0)
+  controls.enableDamping = true
+  controls.dampingFactor = 0.1
+  controls.minDistance = 1.5
+  controls.maxDistance = 8
+  controls.maxPolarAngle = Math.PI * 0.85
+  controls.update()
+
+  // Load initial exercise
+  const initialId = appStore.getState().selectedExerciseId
+  await loadExercise(initialId)
+
+  // Subscribe to playback state changes
   appStore.subscribe((state, prevState) => {
+    if (!animationController) return
     if (state.isPlaying !== prevState.isPlaying) {
       animationController.setPaused(!state.isPlaying)
     }
@@ -58,9 +92,28 @@ async function init() {
     }
   })
 
-  // Start render loop — call animationController.update() each frame
+  // Subscribe to exercise switching
+  appStore.subscribe((state, prevState) => {
+    if (state.selectedExerciseId !== prevState.selectedExerciseId) {
+      loadExercise(state.selectedExerciseId)
+    }
+  })
+
+  // Mount UI panels
+  const exerciseList = document.getElementById('exercise-list')!
+  mountExerciseSelector(exerciseList)
+
+  const formGuide = document.getElementById('form-guide')!
+  mountFormGuide(formGuide)
+
+  mountPlaybackOverlay(centerPanel)
+
+  // Start render loop
   const loop = createRenderLoop(renderer, scene, camera, () => {
-    animationController.update()
+    controls.update()
+    if (animationController) {
+      animationController.update()
+    }
   })
   loop.start()
 }

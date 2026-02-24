@@ -6,3 +6,9 @@
   --color-mannequin: oklch(80% 0.005 264);
   --color-accent: oklch(65% 0.18 264);
 }
+
+#panel-center canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}

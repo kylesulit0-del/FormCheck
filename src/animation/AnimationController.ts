@@ -66,4 +66,18 @@ export class AnimationController {
       this.currentAction.paused = paused
     }
   }
+
+  /**
+   * Clean up the mixer and clock for exercise switching.
+   * Stops all actions, uncaches the root, and stops the clock.
+   */
+  dispose(): void {
+    if (this.currentAction) {
+      this.currentAction.stop()
+      this.currentAction = null
+    }
+    this.mixer.stopAllAction()
+    this.mixer.uncacheRoot(this.mixer.getRoot())
+    this.clock.stop()
+  }
 }
