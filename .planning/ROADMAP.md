@@ -58,7 +58,9 @@ Plans:
   1. User can select slow, normal, or fast playback speed and the animation visibly changes pace with no stutter or jump at loop boundaries
   2. User can click Front, Side, or Back preset buttons and the camera moves to the corresponding position around the model
   3. User can drag a timeline slider to scrub through the animation frame by frame and release it to resume playback from that position
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 03-01-PLAN.md — Rebuild control bar as single-row layout with smooth camera presets, styled timeline scrubber, and speed buttons
 
 ### Phase 4: Exercise Content
 **Goal**: All five starter exercises are fully playable and documented — each with a smooth animation, accurate step-by-step form instructions, common mistakes, and muscle highlights — so the site delivers its complete core value
@@ -90,6 +92,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-02-24 |
 | 2. 3D Viewer Core | 1/1 | Complete   | 2026-02-24 |
-| 3. Playback Controls | 0/TBD | Not started | - |
+| 3. Playback Controls | 0/1 | Not started | - |
 | 4. Exercise Content | 0/TBD | Not started | - |
 | 5. Mobile and Polish | 0/TBD | Not started | - |
