@@ -14,6 +14,10 @@ export interface AppState {
   isScrubbing: boolean
   /** Whether annotation overlay labels are visible */
   showAnnotations: boolean
+  /** Whether the left panel is collapsed */
+  leftPanelCollapsed: boolean
+  /** Whether the right panel is collapsed */
+  rightPanelCollapsed: boolean
 
   // Actions
   setExercise: (id: string) => void
@@ -21,6 +25,8 @@ export interface AppState {
   setPlaybackSpeed: (speed: number) => void
   setScrubbing: (v: boolean) => void
   setShowAnnotations: (v: boolean) => void
+  setLeftPanelCollapsed: (v: boolean) => void
+  setRightPanelCollapsed: (v: boolean) => void
 }
 
 /**
@@ -33,10 +39,14 @@ export const appStore = createStore<AppState>((set) => ({
   playbackSpeed: 1.0,
   isScrubbing: false,
   showAnnotations: true,
+  leftPanelCollapsed: false,
+  rightPanelCollapsed: false,
 
   setExercise: (id: string) => set({ selectedExerciseId: id }),
   setPlaying: (playing: boolean) => set({ isPlaying: playing }),
   setPlaybackSpeed: (speed: number) => set({ playbackSpeed: speed }),
   setScrubbing: (v: boolean) => set({ isScrubbing: v }),
   setShowAnnotations: (v: boolean) => set({ showAnnotations: v }),
+  setLeftPanelCollapsed: (v: boolean) => set({ leftPanelCollapsed: v }),
+  setRightPanelCollapsed: (v: boolean) => set({ rightPanelCollapsed: v }),
 }))

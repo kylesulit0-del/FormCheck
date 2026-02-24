@@ -12,3 +12,17 @@
   height: 100% !important;
   display: block;
 }
+
+#panel-left,
+#panel-right {
+  transition: width 200ms ease, opacity 200ms ease, padding 200ms ease;
+  overflow: hidden;
+}
+
+#panel-left.collapsed,
+#panel-right.collapsed {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+}

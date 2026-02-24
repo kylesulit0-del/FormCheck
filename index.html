@@ -19,7 +19,10 @@
     </aside>
 
     <!-- Center panel: 3D viewer -->
-    <main id="panel-center" class="flex-1 relative min-w-0"></main>
+    <main id="panel-center" class="flex-1 relative min-w-0">
+      <button id="toggle-left" class="absolute left-2 top-2 z-20 w-6 h-6 rounded bg-surface/80 border border-white/10 text-white/50 hover:text-white hover:bg-white/20 text-xs flex items-center justify-center cursor-pointer transition-colors" title="Toggle left panel">&#x2039;</button>
+      <button id="toggle-right" class="absolute right-2 top-2 z-20 w-6 h-6 rounded bg-surface/80 border border-white/10 text-white/50 hover:text-white hover:bg-white/20 text-xs flex items-center justify-center cursor-pointer transition-colors" title="Toggle right panel">&#x203a;</button>
+    </main>
 
     <!-- Right panel: form guide -->
     <aside id="panel-right" class="w-72 bg-bg flex flex-col shrink-0">

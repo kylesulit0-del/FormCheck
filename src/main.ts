@@ -129,6 +129,29 @@ async function init() {
   mountPlaybackOverlay(centerPanel)
   mountAnnotationOverlay(centerPanel)
 
+  // Panel collapse controls
+  const panelLeft = document.getElementById('panel-left')!
+  const panelRight = document.getElementById('panel-right')!
+  const toggleLeft = document.getElementById('toggle-left')!
+  const toggleRight = document.getElementById('toggle-right')!
+
+  toggleLeft.addEventListener('click', () => {
+    const { leftPanelCollapsed, setLeftPanelCollapsed } = appStore.getState()
+    setLeftPanelCollapsed(!leftPanelCollapsed)
+  })
+
+  toggleRight.addEventListener('click', () => {
+    const { rightPanelCollapsed, setRightPanelCollapsed } = appStore.getState()
+    setRightPanelCollapsed(!rightPanelCollapsed)
+  })
+
+  appStore.subscribe((state) => {
+    panelLeft.classList.toggle('collapsed', state.leftPanelCollapsed)
+    panelRight.classList.toggle('collapsed', state.rightPanelCollapsed)
+    toggleLeft.textContent = state.leftPanelCollapsed ? '›' : '‹'
+    toggleRight.textContent = state.rightPanelCollapsed ? '‹' : '›'
+  })
+
   // Start render loop
   const loop = createRenderLoop(renderer, scene, camera, () => {
     controls.update()
