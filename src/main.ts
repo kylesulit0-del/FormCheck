@@ -4,6 +4,7 @@ import './style.css'
 import { scene, camera, renderer, initRenderer } from './core/renderer'
 import { createRenderLoop } from './core/loop'
 import { buildMannequin } from './mannequin/MannequinBuilder'
+import type { MannequinRig } from './mannequin/MannequinBuilder'
 import { AnimationController } from './animation/AnimationController'
 import { getExercise } from './exercises/registry'
 import { loadExerciseModel } from './loaders/modelLoader'
@@ -12,6 +13,8 @@ import { mountExerciseSelector } from './ui/ExerciseSelector'
 import { mountFormGuide } from './ui/FormGuide'
 import { mountPlaybackOverlay } from './ui/PlaybackOverlay'
 import { registerControls } from './core/cameraPresets'
+import { setAnimationController } from './core/animationRef'
+import { applyMuscleHighlights } from './mannequin/highlighter'
 
 // Current exercise state — replaced on exercise switch
 let animRoot: THREE.Object3D | null = null
@@ -25,6 +28,7 @@ async function loadExercise(id: string): Promise<void> {
   if (animationController) {
     animationController.dispose()
     animationController = null
+    setAnimationController(null)
   }
   if (animRoot) {
     scene.remove(animRoot)
@@ -33,6 +37,7 @@ async function loadExercise(id: string): Promise<void> {
 
   const exercise = getExercise(id)
   let clip: THREE.AnimationClip
+  let rig: MannequinRig | null = null
 
   if (exercise.modelPath) {
     const model = await loadExerciseModel(exercise.modelPath)
@@ -51,7 +56,7 @@ async function loadExercise(id: string): Promise<void> {
     }
     clip = found
   } else {
-    const rig = buildMannequin()
+    rig = buildMannequin()
     scene.add(rig.root)
     animRoot = rig.root
     clip = exercise.buildAnimation(rig)
@@ -61,6 +66,12 @@ async function loadExercise(id: string): Promise<void> {
   animationController.play(clip)
   animationController.setPaused(!appStore.getState().isPlaying)
   animationController.setSpeed(appStore.getState().playbackSpeed)
+  setAnimationController(animationController)
+
+  // Highlight muscles on the mannequin (skip for GLB models)
+  if (rig) {
+    applyMuscleHighlights(rig, exercise)
+  }
 }
 
 async function init() {
@@ -115,7 +126,7 @@ async function init() {
   // Start render loop
   const loop = createRenderLoop(renderer, scene, camera, () => {
     controls.update()
-    if (animationController) {
+    if (animationController && !appStore.getState().isScrubbing) {
       animationController.update()
     }
   })

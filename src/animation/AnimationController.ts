@@ -67,6 +67,24 @@ export class AnimationController {
     }
   }
 
+  /** Current playback time of the active action. */
+  getTime(): number {
+    return this.currentAction?.time ?? 0
+  }
+
+  /** Duration of the active clip. */
+  getDuration(): number {
+    return this.currentAction?.getClip().duration ?? 0
+  }
+
+  /** Seek to a specific time without advancing the clock. */
+  setTime(t: number): void {
+    if (this.currentAction) {
+      this.currentAction.time = t
+      this.mixer.update(0)
+    }
+  }
+
   /**
    * Clean up the mixer and clock for exercise switching.
    * Stops all actions, uncaches the root, and stops the clock.

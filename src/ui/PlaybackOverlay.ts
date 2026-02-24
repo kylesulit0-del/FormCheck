@@ -1,5 +1,6 @@
 import { appStore } from '../core/store'
 import { setCameraPreset, type PresetName } from '../core/cameraPresets'
+import { getAnimationController } from '../core/animationRef'
 
 const SPEEDS = [0.5, 1, 2] as const
 const CAMERA_PRESETS: { label: string; name: PresetName }[] = [
@@ -20,7 +21,7 @@ const btnActive = `${btnBase} bg-accent/20 text-accent`
 
 /**
  * Mounts playback controls overlay at the bottom-center of the 3D viewer.
- * Contains: camera presets, play/pause, speed buttons.
+ * Contains: camera presets, play/pause, speed buttons, timeline slider.
  */
 export function mountPlaybackOverlay(container: HTMLElement): void {
   const wrapper = document.createElement('div')
@@ -93,7 +94,55 @@ export function mountPlaybackOverlay(container: HTMLElement): void {
     updateSpeedHighlight()
   })
 
+  // --- Timeline scrub slider ---
+  const sliderRow = document.createElement('div')
+  sliderRow.className = 'w-48'
+
+  const slider = document.createElement('input')
+  slider.type = 'range'
+  slider.min = '0'
+  slider.max = '1'
+  slider.step = '0.01'
+  slider.value = '0'
+  slider.className = 'w-full accent-accent h-1 cursor-pointer'
+  slider.style.cssText = 'appearance: auto; opacity: 0.85;'
+
+  slider.addEventListener('input', () => {
+    const ctrl = getAnimationController()
+    if (!ctrl) return
+    appStore.getState().setScrubbing(true)
+    ctrl.setTime(parseFloat(slider.value))
+  })
+
+  slider.addEventListener('change', () => {
+    appStore.getState().setScrubbing(false)
+  })
+
+  sliderRow.appendChild(slider)
+
+  // RAF loop to sync slider with animation time
+  let rafId = 0
+  function syncSlider() {
+    const ctrl = getAnimationController()
+    if (ctrl && !appStore.getState().isScrubbing) {
+      const dur = ctrl.getDuration()
+      if (dur > 0) {
+        // Update max if clip changed
+        if (slider.max !== String(dur)) slider.max = String(dur)
+        slider.value = String(ctrl.getTime())
+      }
+    }
+    rafId = requestAnimationFrame(syncSlider)
+  }
+  rafId = requestAnimationFrame(syncSlider)
+
+  // Clean up on removal (defensive)
+  wrapper.addEventListener('DOMNodeRemovedFromDocument', () => {
+    cancelAnimationFrame(rafId)
+  })
+
   wrapper.appendChild(cameraRow)
   wrapper.appendChild(playbackRow)
+  wrapper.appendChild(sliderRow)
   container.appendChild(wrapper)
 }
