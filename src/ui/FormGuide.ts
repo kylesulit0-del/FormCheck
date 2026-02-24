@@ -1,5 +1,6 @@
 import { appStore } from '../core/store'
 import { getExercise } from '../exercises/registry'
+import { getAnimationController } from '../core/animationRef'
 
 /**
  * Mounts the form guide panel showing exercise details:
@@ -52,4 +53,38 @@ export function mountFormGuide(container: HTMLElement): void {
 
   render()
   appStore.subscribe(render)
+
+  // RAF loop for animation-synchronized active step highlighting
+  let rafId = 0
+
+  function syncActiveStep() {
+    const ctrl = getAnimationController()
+    if (ctrl) {
+      const dur = ctrl.getDuration()
+      if (dur > 0) {
+        const steps = container.querySelectorAll<HTMLLIElement>('ol li')
+        if (steps.length > 0) {
+          const normalized = ctrl.getTime() / dur
+          const activeIndex = Math.min(
+            Math.floor(normalized * steps.length),
+            steps.length - 1,
+          )
+          steps.forEach((li, i) => {
+            if (i === activeIndex) {
+              li.classList.add('text-white', 'font-medium')
+              li.classList.remove('text-white/80')
+            } else {
+              li.classList.remove('text-white', 'font-medium')
+              li.classList.add('text-white/80')
+            }
+          })
+        }
+      }
+    }
+    rafId = requestAnimationFrame(syncActiveStep)
+  }
+
+  rafId = requestAnimationFrame(syncActiveStep)
+  // Keep rafId referenced to satisfy the linter
+  void rafId
 }
